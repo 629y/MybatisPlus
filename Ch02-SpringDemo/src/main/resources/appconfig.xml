@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+<!-- <import resource=""/>   -->
+    <context:property-placeholder location="db.properties"/>
+    <bean id="dd" class="java.util.Date"/>
+<!--    数据库连接池-->
+    <bean id="ds" class="com.zaxxer.hikari.HikariDataSource">
+        <property name="driverClassName" value="${db.driver}"/>
+        <property name="jdbcUrl" value="${db.url}"/>
+        <property name="username" value="${db.username}"/>
+        <property name="password" value="${db.password}"/>
+    </bean>
+
+    <bean id="sf" class="com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean">
+        <property name="dataSource" ref="ds"/>
+        <property name="mapperLocations" value="mapper/*.xml"/>
+    </bean>
+
+<!--    <bean id="ss" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+<!--        <property name="dataSource" ref="ds"/>-->
+<!--        <property name="mapperLocations" value="classpath*:mapper/DbMapper.xml"/>-->
+<!--    </bean>-->
+
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="cn.zxy.mapper"/>
+    </bean>
+
+
+</beans>
