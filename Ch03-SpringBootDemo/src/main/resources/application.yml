@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    url: jdbc:mysql:/db
+    username: root
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
+
+  main:
+    banner-mode: console
+
+
+mybatis-plus:
+  global-config:
+    banner: on
+    enable-sql-runner: true
+  mapper-locations: classpath:/mapper/**/*.xml
+
+logging:
+  level:
+    root: off
+    cn.zxy: info
+

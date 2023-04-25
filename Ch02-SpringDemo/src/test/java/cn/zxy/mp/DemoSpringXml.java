@@ -5,12 +5,16 @@
 package cn.zxy.mp;
 
 import cn.zxy.mapper.DbMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.session.SqlSession;
 import org.junit.jupiter.api.Test;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
+
+import java.util.List;
+
 /**
  * <p>Description:</p>
  * <p>Class:</p>
@@ -20,7 +24,7 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
  * @version 1.0
  * @since 17
  */
-@SpringJUnitConfig(locations = "classpath:appconfig.xml")
+@SpringJUnitConfig(locations = "classpath:appconfig.xml") @Slf4j
 public class DemoSpringXml {
         @Autowired
         ApplicationContext ctx;
@@ -28,11 +32,13 @@ public class DemoSpringXml {
         DbMapper dm;
 
 
+
         @Test
         void m1() throws Exception {
                 //SqlSession ss = sf.getObject().openSession();
                 //System.out.println(ss);
                 System.out.println(dm.dbs());
+                log.info("hello world");
         }
 
         @Test
@@ -42,5 +48,12 @@ public class DemoSpringXml {
                 }
         }
 
+        @Autowired
+        SqlSession ss;
 
+        @Test
+        void m2(){
+                List<String> ds  = ss.selectList("dbs");
+                log.info("{}",ds);
+        }
 }

@@ -10,6 +10,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>Ch02-SpringDemo</module>
+        <module>Ch03-SpringBootDemo</module>
     </modules>
 
     <properties>
