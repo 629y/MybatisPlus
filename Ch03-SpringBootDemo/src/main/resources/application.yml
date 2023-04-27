@@ -4,6 +4,16 @@ spring:
     username: root
     password: root
     type: com.zaxxer.hikari.HikariDataSource
+  sql:
+    init:
+      encoding: UTF-8
+      separator: ;
+      username: root
+      password: root
+      #这两个脚本文件放在resources/db/db.sql
+      schema-locations: classpath*:db/tag-tag-schema.sql
+      data-locations: classpath*:db/tag-data.sql
+      mode: always
 
   main:
     banner-mode: console
@@ -11,12 +21,11 @@ spring:
 
 mybatis-plus:
   global-config:
-    banner: on
-    enable-sql-runner: true
-  mapper-locations: classpath:/mapper/**/*.xml
+    banner: off
+
 
 logging:
   level:
     root: off
-    cn.zxy: info
+
 

@@ -11,6 +11,8 @@
     <modules>
         <module>Ch02-SpringDemo</module>
         <module>Ch03-SpringBootDemo</module>
+        <module>Ch05-Generator</module>
+
     </modules>
 
     <properties>
